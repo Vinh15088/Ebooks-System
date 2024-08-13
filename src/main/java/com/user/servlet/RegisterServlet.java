@@ -1,11 +1,10 @@
-package servlet;
+package com.user.servlet;
 
 import java.io.IOException;
 
-import DAO.UserDAO;
-import DAO.UserDAOImpl;
-import DB.DBConnect;
-import entity.User;
+import com.DAO.UserDAOImpl;
+import com.DB.DBConnect;
+import com.entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

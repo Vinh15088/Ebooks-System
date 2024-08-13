@@ -1,6 +1,6 @@
-package DAO;
+package com.DAO;
 
-import entity.User;
+import com.entity.User;
 
 public interface UserDAO {
     public boolean userRegister(User user);

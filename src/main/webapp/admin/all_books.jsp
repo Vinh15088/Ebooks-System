@@ -1,4 +1,9 @@
+<%@ page import="com.DAO.BookDAOImpl" %>
+<%@ page import="com.DB.DBConnect" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.entity.BookDtls" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -12,6 +17,16 @@
 <body>
     <%@include file="navbar.jsp"%>
     <h3 class="text-center">Hello Admin</h3>
+
+    <c:if test="${not empty succMsg}">
+        <p class="text-center text-success">${succMsg}</p>
+        <c:remove var="succMsg" scope="session"/>
+    </c:if>
+
+    <c:if test="${not empty failedMsg}">
+        <p class="text-center text-danger">${failedMsg}</p>
+        <c:remove var="failedMsg" scope="session"/>
+    </c:if>
 
     <div class="container">
 
@@ -29,42 +44,27 @@
         </tr>
         </thead>
         <tbody>
+        <%
+            BookDAOImpl dao = new BookDAOImpl(DBConnect.getConnection());
+            List<BookDtls> list = dao.getAllBooks();
+
+            for(BookDtls book : list) {
+        %>
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td><%= book.getId() %></td>
+            <td><img src="../book/<%=book.getPhotoName()%>" style="width: 50px; height: 50px;"></td>
+            <td><%=book.getAuthor()%></td>
+            <td><%=book.getPrice()%></td>
+            <td><%=book.getBookCategory()%></td>
+            <td><%=book.getStatus()%></td>
             <td>
-                <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                <a href="edit_books.jsp?id=<%=book.getId()%>" class="btn btn-sm btn-primary">Edit</a>
+                <a href="../delete?id=<%=book.getId()%>" class="btn btn-sm btn-danger">Delete</a>
             </td>
         </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>
-                <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                <a href="#" class="btn btn-sm btn-danger">Delete</a>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>
-                <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                <a href="#" class="btn btn-sm btn-danger">Delete</a>
-            </td>
-        </tr>
+        <%
+            }
+        %>
         </tbody>
     </table>
 
