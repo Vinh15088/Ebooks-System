@@ -16,6 +16,11 @@
 </head>
 <body>
     <%@include file="navbar.jsp"%>
+
+    <c:if test="${empty userobj}">
+        <c:redirect url="../login.jsp"/>
+    </c:if>
+
     <h3 class="text-center">Hello Admin</h3>
 
     <c:if test="${not empty succMsg}">
@@ -58,8 +63,8 @@
             <td><%=book.getBookCategory()%></td>
             <td><%=book.getStatus()%></td>
             <td>
-                <a href="edit_books.jsp?id=<%=book.getId()%>" class="btn btn-sm btn-primary">Edit</a>
-                <a href="../delete?id=<%=book.getId()%>" class="btn btn-sm btn-danger">Delete</a>
+                <a href="edit_books.jsp?id=<%=book.getId()%>" class="btn btn-sm btn-primary"><i class="fa fa-pen-to-square"></i> Edit</a>
+                <a href="../delete?id=<%=book.getId()%>" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
             </td>
         </tr>
         <%
