@@ -60,7 +60,7 @@
                                     <%= book.getBookCategory().equals("Old") ? "hidden" : "" %> >
                                 <i class="fa fa-cart-shopping"></i> Add Cart
                             </a>
-                            <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
+                            <a href="view_book.jsp?bid=<%=book.getId()%>" class="btn btn-success btn-sm ml-1">View Details</a>
                             <a href="" class="btn btn-danger btn-sm ml-1"><i class="fa fa-dollar-sign"></i><%=book.getPrice()%></a>
                         </div>
 
@@ -98,7 +98,7 @@
                         <p>Categories: <%=book.getBookCategory()%></p>
                         <div class="col">
                             <a href="" class="btn btn-danger btn-sm ml-2"><i class="fa fa-cart-shopping"></i> Add Cart</a>
-                            <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
+                            <a href="view_book.jsp?bid=<%=book.getId()%>" class="btn btn-success btn-sm ml-1">View Details</a>
                             <a href="" class="btn btn-danger btn-sm ml-1"><i class="fa fa-dollar-sign"></i><%=book.getPrice()%></a>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                         <p><%=book.getAuthor()%></p>
                         <p>Categories: <%=book.getBookCategory()%></p>
                         <div class="col">
-                            <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
+                            <a href="view_book.jsp?bid=<%=book.getId()%>" class="btn btn-success btn-sm ml-1">View Details</a>
                             <a href="" class="btn btn-danger btn-sm ml-1"><i class="fa fa-dollar-sign"></i><%=book.getPrice()%></a>
                         </div>
                     </div>
