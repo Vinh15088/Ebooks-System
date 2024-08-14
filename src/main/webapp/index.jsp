@@ -1,5 +1,8 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="com.DB.DBConnect" %>
+<%@ page import="com.DAO.BookDAOImpl" %>
+<%@ page import="com.entity.BookDtls" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%--<%@ taglib prefix="c" uri="jakarta.tags.core" %>--%>
 <%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
@@ -18,7 +21,7 @@
             background-repeat: no-repeat;
         }
         .crd-ho:hover {
-            background: white;
+            background-color: #fcf7f7;
         }
     </style>
 </head>
@@ -37,72 +40,38 @@
     <div class="container">
         <h3 class="text-center mt-4">Recent Book</h3>
         <div class="row">
+            <%
+                BookDAOImpl dao1 = new BookDAOImpl(DBConnect.getConnection());
+                List<BookDtls> list1 = dao1.getRecentBooḳ();
+                for(BookDtls book : list1) {
+            %>
             <div class="col-md-3">
                 <div class="card crd-ho">
                     <div class="card-body text-center">
-                        <img alt="" src="book/HP1_posters.jpg"
+                        <img alt="" src="book/<%=book.getPhotoName()%>"
                              style="width: 150px; height: 200px" class="img-thumblin">
-                        <p>Corcerers Stone</p>
-                        <p>J. K. Rowling</p>
-                        <p>Categories: New</p>
+                        <p><%=book.getBookName()%></p>
+                        <p><%=book.getAuthor()%></p>
+                        <p>
+                            Categories: <%=book.getBookCategory()%>
+                        </p>
                         <div class="col">
-                            <a href="" class="btn btn-danger btn-sm ml-2"><i class="fa fa-cart-shopping"></i> Add Cart</a>
+                            <a href="" class="btn btn-danger btn-sm ml-2"
+                                    <%= book.getBookCategory().equals("Old") ? "hidden" : "" %> >
+                                <i class="fa fa-cart-shopping"></i> Add Cart
+                            </a>
                             <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
-                            <a href="" class="btn btn-danger btn-sm ml-1">299</a>
+                            <a href="" class="btn btn-danger btn-sm ml-1"><i class="fa fa-dollar-sign"></i><%=book.getPrice()%></a>
                         </div>
+
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card crd-ho">
-                    <div class="card-body text-center">
-                        <img alt="" src="book/Harry_Potter_2.jpg"
-                             style="width: 150px; height: 200px" class="img-thumblin">
-                        <p>Chamber of Secrets</p>
-                        <p>J. K. Rowling</p>
-                        <p>Categories: New</p>
-                        <div class="col">
-                            <a href="" class="btn btn-danger btn-sm ml-2"><i class="fa fa-cart-shopping"></i> Add Cart</a>
-                            <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
-                            <a href="" class="btn btn-danger btn-sm ml-1">289</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card crd-ho">
-                    <div class="card-body text-center">
-                        <img alt="" src="book/Harry_Potter_3.jpg"
-                             style="width: 150px; height: 200px" class="img-thumblin">
-                        <p>Prisoner of Azkaban</p>
-                        <p>J. K. Rowling</p>
-                        <p>Categories: New</p>
-                        <div class="col">
-                            <a href="" class="btn btn-danger btn-sm ml-2"><i class="fa fa-cart-shopping"></i> Add Cart</a>
-                            <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
-                            <a href="" class="btn btn-danger btn-sm ml-1">229</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card crd-ho">
-                    <div class="card-body text-center">
-                        <img alt="" src="book/Harry_Potter_4.jpg"
-                             style="width: 150px; height: 200px" class="img-thumblin">
-                        <p>Goblet of Fire</p>
-                        <p>J. K. Rowling</p>
-                        <p>Categories: New</p>
-                        <div class="col">
-                            <a href="" class="btn btn-danger btn-sm ml-2"><i class="fa fa-cart-shopping"></i> Add Cart</a>
-                            <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
-                            <a href="" class="btn btn-danger btn-sm ml-1">219</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <%
+                }
+            %>
             <div class="text-center mt-2">
-                <a href="" class="btn btn-danger btn-sm">View All</a>
+                <a href="all_recent_book.jsp" class="btn btn-danger btn-sm">View All</a>
             </div>
         </div>
     </div>
@@ -114,153 +83,75 @@
     <div class="container">
         <h3 class="text-center mt-4">New Book</h3>
         <div class="row">
+                <%
+                    BookDAOImpl dao2 = new BookDAOImpl(DBConnect.getConnection());
+                    List<BookDtls> list2 = dao2.getNewBooḳ();
+                    for(BookDtls book : list2) {
+                %>
             <div class="col-md-3">
                 <div class="card crd-ho">
                     <div class="card-body text-center">
-                        <img alt="" src="book/Harry_Potter_6.jpg"
+                        <img alt="" src="book/<%=book.getPhotoName()%>"
                              style="width: 150px; height: 200px" class="img-thumblin">
-                            <p>Order of the Phoenix</p>
-                            <p>J. K. Rowling</p>
-                            <p>Categories: New</p>
-                            <div class="col">
-                                <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
-                                <a href="" class="btn btn-danger btn-sm ml-1">269</a>
-                            </div>
+                        <p><%=book.getBookName()%></p>
+                        <p><%=book.getAuthor()%></p>
+                        <p>Categories: <%=book.getBookCategory()%></p>
+                        <div class="col">
+                            <a href="" class="btn btn-danger btn-sm ml-2"><i class="fa fa-cart-shopping"></i> Add Cart</a>
+                            <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
+                            <a href="" class="btn btn-danger btn-sm ml-1"><i class="fa fa-dollar-sign"></i><%=book.getPrice()%></a>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img alt="" src="book/Harry_Potter_7.jpg"
-                                 style="width: 150px; height: 200px" class="img-thumblin">
-                            <p>Half-Blood Prince</p>
-                            <p>J. K. Rowling</p>
-                            <p>Categories: New</p>
-                            <div class="col">
-                                <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
-                                <a href="" class="btn btn-danger btn-sm ml-1">249</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img alt="" src="book/Harry_Potter_8.jpg"
-                                 style="width: 150px; height: 200px" class="img-thumblin">
-                            <p>Deathly Hallows</p>
-                            <p>J. K. Rowling</p>
-                            <p>Categories: New</p>
-                            <div class="col">
-                                <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
-                                <a href="" class="btn btn-danger btn-sm ml-1">239</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img alt="" src="book/Flash%20ss8.jpg"
-                                 style="width: 150px; height: 200px" class="img-thumblin">
-                            <p>Flash Seasson 8</p>
-                            <p>Greg Berlanti</p>
-                            <p>Categories: New</p>
-                            <div class="col">
-                                <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
-                                <a href="" class="btn btn-danger btn-sm ml-1">299</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-2">
-                    <a href="" class="btn btn-danger btn-sm">View All</a>
                 </div>
             </div>
+                <%
+                    }
+                %>
+
+
+            <div class="text-center mt-2">
+                <a href="all_new_book.jsp" class="btn btn-danger btn-sm">View All</a>
+            </div>
         </div>
+    </div>
         <%--            End New Book--%>
     <hr class="mt-4"/>
 
 
         <%--        Old Book--%>
     <div class="container">
-                <h3 class="text-center mt-4">Old Book</h3>
-
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card crd-ho">
-                            <div class="card-body text-center">
-                                <img alt="" src="book/Flash%20ss9.jpg"
-                                     style="width: 150px; height: 200px" class="img-thumblin">
-                                <p>Flash Seasson 9</p>
-                                <p>Greg Berlanti</p>
-                                <p>Categories: New</p>
-                                <div class="col">
-                                    <a href="" class="btn btn-danger btn-sm ml-1">View Details</a>
-                                    <a href="" class="btn btn-danger btn-sm ml-1">319</a>
-                                </div>
-                            </div>
+        <h3 class="text-center mt-4">Old Book</h3>
+        <div class="row">
+            <%
+                BookDAOImpl dao3 = new BookDAOImpl(DBConnect.getConnection());
+                List<BookDtls> list3 = dao3.getOldBook();
+                for(BookDtls book : list3) {
+            %>
+            <div class="col-md-3">
+                <div class="card crd-ho">
+                    <div class="card-body text-center">
+                        <img alt="" src="book/<%=book.getPhotoName()%>"
+                             style="width: 150px; height: 200px" class="img-thumblin">
+                        <p><%=book.getBookName()%></p>
+                        <p><%=book.getAuthor()%></p>
+                        <p>Categories: <%=book.getBookCategory()%></p>
+                        <div class="col">
+                            <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
+                            <a href="" class="btn btn-danger btn-sm ml-1"><i class="fa fa-dollar-sign"></i><%=book.getPrice()%></a>
                         </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card crd-ho">
-                            <div class="card-body text-center">
-                                <img alt="" src="book/The%20Lord%20of%20the%20Rings%201.jpg"
-                                     style="width: 150px; height: 200px" class="img-thumblin">
-                                <p>The Lord of the Rings 1</p>
-                                <p>Peter Jackson</p>
-                                <p>Categories: New</p>
-                                <div class="col">
-                                    <a href="" class="btn btn-danger btn-sm ml-1">View Details</a>
-                                    <a href="" class="btn btn-danger btn-sm ml-1">289</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card crd-ho">
-                            <div class="card-body text-center">
-                                <img alt="" src="book/The%20Lord%20of%20the%20Rings%202.jpg"
-                                     style="width: 150px; height: 200px" class="img-thumblin">
-                                <p>The Lord of the Rings 2</p>
-                                <p>Peter Jackson</p>
-                                <p>Categories: New</p>
-                                <div class="col">
-                                    <a href="" class="btn btn-danger btn-sm ml-1">View Details</a>
-                                    <a href="" class="btn btn-danger btn-sm ml-1">269</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="card crd-ho">
-                            <div class="card-body text-center">
-                                <img alt="" src="book/The%20Lord%20of%20the%20Rings%203.jpg"
-                                     style="width: 150px; height: 200px" class="img-thumblin">
-                                <p>The Lord of the Rings 3</p>
-                                <p>Peter Jackson</p>
-                                <p>Categories: New</p>
-                                <div class="col">
-                                    <a href="" class="btn btn-danger btn-sm ml-1">View Details</a>
-                                    <a href="" class="btn btn-danger btn-sm ml-1">279</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center mt-2">
-                        <a href="" class="btn btn-danger btn-sm">View All</a>
                     </div>
                 </div>
+            </div>
+            <%
+                }
+            %>
+
+
+            <div class="text-center mt-2">
+                <a href="all_old_book.jsp" class="btn btn-danger btn-sm">View All</a>
+            </div>
         </div>
+    </div>
     <%--            End Old Book--%>
 
 

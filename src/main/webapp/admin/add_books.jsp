@@ -56,7 +56,7 @@
 
                             <div class="form-group py-2">
                                 <label for="inputState">Book Status</label>
-                                <select id="inputState" name="tatus" class="form-control">
+                                <select id="inputState" name="status" class="form-control">
                                     <option selected>--select--</option>
                                     <option value="Active">Active</option>
                                     <option value="Inactive">Inactive</option>

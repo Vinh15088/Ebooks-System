@@ -32,18 +32,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home
+                    <a class="nav-link active" aria-current="page" href="index.jsp">Home
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-book"></i> Recent Book</a>
+                    <a class="nav-link" href="all_recent_book.jsp"><i class="fa fa-book"></i> Recent Book</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-book"></i> New Book</a>
+                    <a class="nav-link" href="all_new_book.jsp"><i class="fa fa-book"></i> New Book</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa fa-book"></i> Old Book</a>
+                    <a class="nav-link" href="all_old_book.jsp"><i class="fa fa-book"></i> Old Book</a>
                 </li>
             </ul>
         </div>
