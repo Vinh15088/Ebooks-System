@@ -348,5 +348,62 @@ public class BookDAOImpl implements BookDAO {
         return list;
     }
 
+    @Override
+    public List<BookDtls> getBookByOld(String email, String cate) {
+        List<BookDtls> list = new ArrayList<BookDtls>();
+        BookDtls bookDtls = null;
+
+        try {
+            String sql = "select * from book_dtls where bookcategory=? and email=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setString(1, cate);
+            ps.setString(2, email);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                bookDtls = new BookDtls();
+                bookDtls.setId(rs.getInt(1));
+                bookDtls.setBookName(rs.getString(2));
+                bookDtls.setAuthor(rs.getString(3));
+                bookDtls.setPrice(rs.getString(4));
+                bookDtls.setBookCategory(rs.getString(5));
+                bookDtls.setStatus(rs.getString(6));
+                bookDtls.setPhotoName(rs.getString(7));
+                bookDtls.setEmail(rs.getString(8));
+
+                list.add(bookDtls);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    @Override
+    public boolean oldBookDelete(String email, String cate, int id) {
+        boolean f = false;
+
+        try {
+            String sql = "delete from book_dtls where bookcategory=? and email=? and bookid=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setString(1, cate);
+            ps.setString(2, email);
+            ps.setInt(3, id);
+
+            int check = ps.executeUpdate();
+
+            if(check == 1) f = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return f;
+    }
+
 
 }

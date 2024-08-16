@@ -32,7 +32,7 @@
         <h3 class="text-center mt-3">Hello, ${userobj.name}</h3>
 
         <div class="row p-5">
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <a  href="sell_book.jsp">
                     <div class="card">
                         <div class="card-body text-center">
@@ -40,12 +40,27 @@
                                 <i class="fa fa-book-open fa-3x"></i>
                             </div>
                             <h3>Sell Old Book</h3>
+                            <h3 style="visibility: hidden">Hehe</h3>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
+                <a  href="old_book.jsp">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div class="text-primary">
+                                <i class="fa fa-book-open fa-3x"></i>
+                            </div>
+                            <h3>Old Book</h3>
+                            <h3 style="visibility: hidden">Hehe</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
                 <a  href="edit_profile.jsp">
                     <div class="card">
                         <div class="card-body text-center">

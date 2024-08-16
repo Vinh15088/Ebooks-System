@@ -70,7 +70,7 @@
                                 <td><%=cart.getPrice()%></td>
 <%--                                <td><%=cart.getTotalPrice()%></td>--%>
                                 <td>
-                                    <a href="remove_book?bid=<%=cart.getbId()%>&&uid=<%=cart.getuId()%>" class="btn btn-sm btn-danger">Remove</a>
+                                    <a href="remove_book?bid=<%=cart.getbId()%>&&uid=<%=cart.getuId()%>&&cid=<%=cart.getcId()%>" class="btn btn-sm btn-danger">Remove</a>
                                 </td>
                             </tr>
 
