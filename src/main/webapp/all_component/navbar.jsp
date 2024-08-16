@@ -62,7 +62,7 @@
         </div>
 
         <form class="form-inline my-2 my-lg-0 ml-4">
-            <button class="btn btn-light my-2 my-sm-0" type="submit"><i class="fa fa-gear"></i> Setting</button>
+            <a href="setting.jsp" class="btn btn-light my-2 my-sm-0" type="submit"><i class="fa fa-gear"></i> Setting</a>
             <button class="btn btn-light my-2 my-sm-0" type="submit"><i class="fa fa-phone"></i> Contact Us</button>
         </form>
     </div>
