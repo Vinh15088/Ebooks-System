@@ -31,7 +31,7 @@ public class CartServlet extends HttpServlet {
             Cart cart = new Cart();
 
             cart.setbId(bid);
-            cart.setcId(uid);
+            cart.setuId(uid);
             cart.setBookName(bookDtls.getBookName());
             cart.setAuthor(bookDtls.getAuthor());
             cart.setPrice(Double.parseDouble(bookDtls.getPrice()));
