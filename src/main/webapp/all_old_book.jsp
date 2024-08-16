@@ -26,7 +26,7 @@
         <div class="row">
             <%
                 BookDAOImpl dao3 = new BookDAOImpl(DBConnect.getConnection());
-                List<BookDtls> list3 = dao3.getOldBook();
+                List<BookDtls> list3 = dao3.getAllOldBook();
                 for(BookDtls book : list3) {
             %>
             <div class="col-md-3 pb-3">
@@ -38,7 +38,7 @@
                         <p><%=book.getAuthor()%></p>
                         <p>Categories: <%=book.getBookCategory()%></p>
                         <div class="col">
-                            <a href="" class="btn btn-success btn-sm ml-1">View Details</a>
+                            <a href="view_book.jsp?bid=<%=book.getId()%>" class="btn btn-success btn-sm ml-1">View Details</a>
                             <a href="" class="btn btn-danger btn-sm ml-1"><i class="fa fa-dollar-sign"></i><%=book.getPrice()%></a>
                         </div>
                     </div>
