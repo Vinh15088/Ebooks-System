@@ -40,7 +40,7 @@
                                 <i class="fa fa-book-open fa-3x"></i>
                             </div>
                             <h3>Sell Old Book</h3>
-                            <h3 style="visibility: hidden">Hehe</h3>
+<%--                            <h3 style="visibility: hidden">Hehe</h3>--%>
                         </div>
                     </div>
                 </a>
@@ -54,7 +54,7 @@
                                 <i class="fa fa-book-open fa-3x"></i>
                             </div>
                             <h3>Old Book</h3>
-                            <h3 style="visibility: hidden">Hehe</h3>
+<%--                            <h3 style="visibility: hidden">Hehe</h3>--%>
                         </div>
                     </div>
                 </a>
@@ -67,27 +67,14 @@
                             <div class="text-primary">
                                 <i class="fa fa-pen-to-square fa-3x"></i>
                             </div>
-                            <h3>Login & Security (Edit Profile)</h3>
+                            <h3>Edit Profile</h3>
                         </div>
                     </div>
                 </a>
             </div>
 
-            <div class="col-md-4 mt-3">
-                <a  href="user_address.jsp">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="text-warning">
-                                <i class="fa fa-location-dot fa-3x"></i>
-                            </div>
-                            <h3>Your Address</h3>
-                            <p>Edit Address</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
 
-            <div class="col-md-4 mt-3">
+            <div class="col-md-6 mt-3">
                 <a  href="order.jsp">
                     <div class="card">
                         <div class="card-body text-center">
@@ -101,7 +88,7 @@
                 </a>
             </div>
 
-            <div class="col-md-4 mt-3">
+            <div class="col-md-6 mt-3">
                 <a  href="help_line.jsp">
                     <div class="card">
                         <div class="card-body text-center">

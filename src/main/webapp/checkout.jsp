@@ -25,18 +25,20 @@
 
 
     <c:if test="${not empty succMsg}">
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success text-center" role="alert">
             ${succMsg}
         </div>
         <c:remove var="succMsg" scope="session"/>
     </c:if>
 
     <c:if test="${not empty failedMsg}">
-        <div class="alert alert-danger" role="alert">
+        <div class="alert alert-danger text-center" role="alert">
                 ${failedMsg}
         </div>
         <c:remove var="failedMsg" scope="session"/>
     </c:if>
+
+
 
     <div class="container">
         <div class="row p-2">
@@ -92,67 +94,69 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <form>
+                        <form action="order" method="post">
+                            <input type="hidden" value="${userobj.id}" name="id"/>
+
                             <h3 class="text-center text-success">Your Details for Order</h3>
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="form-group col-md-6">
                                     <label for="inputName">Name</label>
-                                    <input type="text" class="form-control" id="inputName" value="<%=user.getName()%>">
+                                    <input type="text" name="name" class="form-control" id="inputName" value="${userobj.name}">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword">Email</label>
-                                    <input type="email" class="form-control" id="inputPassword" value="<%=user.getEmail()%>">
+                                    <input type="email" name="email" class="form-control" id="inputPassword" value="<%=user.getEmail()%>">
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="form-group col-md-6">
                                     <label for="inputPhoneNumber">Phone Number</label>
-                                    <input type="number" class="form-control" id="inputPhoneNumber" value="<%=user.getPhno()%>">
+                                    <input type="number" name="phno" class="form-control" id="inputPhoneNumber" value="<%=user.getPhno()%>">
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputAddress">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" value="<%=user.getAddress()%>">
+                                    <input type="text" name="address" class="form-control" id="inputAddress" >
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="form-group col-md-6">
                                     <label for="inputLandmark">Landmark</label>
-                                    <input type="text" class="form-control" id="inputLandmark" value="<%=user.getLandmark()%>">
+                                    <input type="text" name="landmark" class="form-control" id="inputLandmark" >
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">City</label>
-                                    <input type="text" class="form-control" id="inputCity" value="<%=user.getCity()%>">
+                                    <input type="text" name="city" class="form-control" id="inputCity" >
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="form-group col-md-6">
                                     <label for="inputState">State</label>
-                                    <input type="text" class="form-control" id="inputState" value="<%=user.getState()%>">
+                                    <input type="text" name="state" class="form-control" id="inputState" >
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputPinCode">Pin code</label>
-                                    <input type="text" class="form-control" id="inputPinCode" value="<%=user.getPincode()%>">
+                                    <input type="text" name="pincode" class="form-control" id="inputPinCode" >
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mt-3">
                                 <label>Payment Mode</label>
-                                <select class="form-control">
-                                    <option>--Select--</option>
-                                    <option>Cash on Delivery</option>
+                                <select class="form-control" name="payment">
+                                    <option value="noselect">--Select--</option>
+                                    <option value="COD">Cash on Delivery</option>
                                 </select>
                             </div>
 
-                            <div class="text-center pt-2">
+                            <div class="text-center pt-2 mt-3">
                                 <button class="btn btn-warning">Order Now</button>
-                                <a href="index.jsp" class="btn btn-success">Continue Shopping</a>
+                                <a href="index.jsp" class="btn btn-success m-2">Continue Shopping</a>
                             </div>
                         </form>
                     </div>

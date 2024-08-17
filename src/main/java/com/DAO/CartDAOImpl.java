@@ -2,6 +2,7 @@ package com.DAO;
 
 import com.entity.BookDtls;
 import com.entity.Cart;
+import jakarta.servlet.http.HttpSession;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -80,7 +81,7 @@ public class CartDAOImpl implements CartDAO{
         boolean f = false;
 
         try {
-            String sql = "delete from cart where bid=? and uid=? and cid";
+            String sql = "delete from cart where bid=? and uid=? and cid=?";
             PreparedStatement ps = conn.prepareStatement(sql);
 
             ps.setInt(1, bid);
