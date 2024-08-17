@@ -20,22 +20,37 @@
                     <div class="card-body">
                         <h3 class="text-center text-primary p-1">Edit Profile</h3>
 
-                        <form action="register" >
+                        <c:if test="${not empty succMsg}">
+                            <h5 class="text-center text-success">${succMsg}</h5>
+                            <c:remove var="succMsg" scope="session"/>
+                        </c:if>
+
+                        <c:if test="${not empty failedMsg}">
+                            <h5 class="text-center text-danger">${failedMsg}</h5>
+                            <c:remove var="failedMsg" scope="session"/>
+                        </c:if>
+
+                        <form action="update_profile" method="post">
+                            <input type="hidden" value="${userobj.id}" name="id">
                             <div class="form-group mt-2">
                                 <label for="fullName">Name*</label>
-                                <input type="text" class="form-control" id="fullName" aria-describedby="emailHelp" required="required" name="fname">
+                                <input type="text" class="form-control" id="fullName"
+                                       aria-describedby="emailHelp" required="required" name="fname" value="${userobj.name}">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="email">Email address*</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required="required" name="email">
+                                <input type="email" class="form-control" id="email"
+                                       aria-describedby="emailHelp" required="required" name="email" value="${userobj.email}">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="phoneNumber">Phone*</label>
-                                <input type="text" class="form-control" id="phoneNumber" aria-describedby="emailHelp" required="required" name="phno">
+                                <input type="text" class="form-control" id="phoneNumber"
+                                       aria-describedby="emailHelp" required="required" name="phno" value="${userobj.phno}">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="exampleInputPassword1">Password*</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required="required" name="password">
+                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                       placeholder="Password" required="required" name="password">
                             </div>
                             <button type="submit" class="btn btn-primary mt-2">Update</button>
                         </form>
