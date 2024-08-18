@@ -2,6 +2,7 @@
 <%@ page import="com.DB.DBConnect" %>
 <%@ page import="com.entity.BookDtls" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.entity.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!doctype html>
@@ -20,6 +21,55 @@
     </style>
 </head>
 <body>
+
+    <%
+        User user = (User) session.getAttribute("userobj");
+    %>
+
+    <c:if test="${not empty addCart}">
+        <div id="toast" style="
+            min-width: 300px;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            margin-left: -150px;
+            background: #333;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            z-index: 1;
+            font-size: 18px;
+            visibility: visible;
+            box-shadow: 0px 0px 100px #000;
+            opacity: 1;
+            transition: opacity 2s ease-in-out;">
+                ${addCart}
+        </div>
+
+        <!-- T?o hi?u ?ng m? d?n -->
+        <c:choose>
+            <c:when test="${!empty addCart}">
+                <style>
+                    #toast {
+                        animation: fadeOutToast 2s 2.5s forwards;
+                    }
+
+                    @keyframes fadeOutToast {
+                        from {
+                            opacity: 1;
+                        }
+                        to {
+                            opacity: 0;
+                        }
+                    }
+                </style>
+            </c:when>
+        </c:choose>
+
+        <c:remove var="addCart" scope="session"/>
+    </c:if>
+
+
     <%@include file="all_component/navbar.jsp"%>
 
     <div class="container-fluid">
@@ -36,16 +86,39 @@
                              style="width: 150px; height: 200px" class="img-thumblin">
                         <p><%=book.getBookName()%></p>
                         <p><%=book.getAuthor()%></p>
-                        <p>
-                            Categories: <%=book.getBookCategory()%>
-                        </p>
+                        <p>Categories: <%=book.getBookCategory()%></p>
                         <div class="col">
-                            <a href="" class="btn btn-danger btn-sm"
+                            <%
+                                if(user == null) {
+                            %>
+                            <a href="login.jsp" class="btn btn-danger btn-sm"
                                     <%= book.getBookCategory().equals("Old") ? "hidden" : "" %> >
                                 <i class="fa fa-cart-shopping"></i> Add Cart
                             </a>
-                            <a href="" class="btn btn-success btn-sm ">View Details</a>
+
+                            <%
+                                } else {
+                            %>
+                            <a href="cart1?bid=<%=book.getId()%>&&uid=<%=user.getId()%>" class="btn btn-danger btn-sm"
+                                    <%= book.getBookCategory().equals("Old") ? "hidden" : "" %> >
+                                <i class="fa fa-cart-shopping"></i> Add Cart
+                            </a>
+
+                            <%
+                                }
+                            %>
+
+
+                            <a href="view_book.jsp?bid=<%=book.getId()%>" class="btn btn-success btn-sm ">View Details</a>
                             <a href="" class="btn btn-danger btn-sm "><i class="fa fa-dollar-sign"></i><%=book.getPrice()%></a>
+
+                            <%
+                                if(book.getBookCategory().equals("Old")) {
+                            %>
+                            <a href="" style="visibility: hidden" class="btn btn-danger btn-sm ml-2"><i class="fa fa-cart-shopping"></i> Add Cart</a>
+                            <%
+                                }
+                            %>
                         </div>
 
                     </div>
