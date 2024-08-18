@@ -18,9 +18,9 @@
         </div>
 
         <c:if test="${not empty userobj}">
-            <div class="col-md-3 text-white">
-                <a href="checkout.jsp"><i class="fa fa-cart-plus fa-2x"></i></a>
-                <a href="login.jsp" class="btn btn-success"><i class="fa fa-user-plus"></i> ${userobj.name}</a>
+            <div class="col-md-3 text-white" style="display: flex; align-items: center;">
+                <a href="checkout.jsp"><i class="fa fa-cart-plus fa-2x "></i></a>
+                <a href="login.jsp" class="btn btn-success mx-2"><i class="fa fa-user-plus"></i> ${userobj.name}</a>
                 <a href="logout" class="btn btn-primary"><i class="fa fa-right-to-bracket"></i> Logout</a>
             </div>
         </c:if>

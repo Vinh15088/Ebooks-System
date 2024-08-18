@@ -101,48 +101,48 @@
                             <div class="row mt-3">
                                 <div class="form-group col-md-6">
                                     <label for="inputName">Name</label>
-                                    <input type="text" name="name" class="form-control" id="inputName" value="${userobj.name}">
+                                    <input type="text" name="name" class="form-control" id="inputName" value="${userobj.name}" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword">Email</label>
-                                    <input type="email" name="email" class="form-control" id="inputPassword" value="<%=user.getEmail()%>">
+                                    <input type="email" name="email" class="form-control" id="inputPassword" value="<%=user.getEmail()%>" required>
                                 </div>
                             </div>
 
                             <div class="row mt-3">
                                 <div class="form-group col-md-6">
                                     <label for="inputPhoneNumber">Phone Number</label>
-                                    <input type="number" name="phno" class="form-control" id="inputPhoneNumber" value="<%=user.getPhno()%>">
+                                    <input type="number" name="phno" class="form-control" id="inputPhoneNumber" value="<%=user.getPhno()%>" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputAddress">Address</label>
-                                    <input type="text" name="address" class="form-control" id="inputAddress" >
+                                    <input type="text" name="address" class="form-control" id="inputAddress" required>
                                 </div>
                             </div>
 
                             <div class="row mt-3">
                                 <div class="form-group col-md-6">
                                     <label for="inputLandmark">Landmark</label>
-                                    <input type="text" name="landmark" class="form-control" id="inputLandmark" >
+                                    <input type="text" name="landmark" class="form-control" id="inputLandmark" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputCity">City</label>
-                                    <input type="text" name="city" class="form-control" id="inputCity" >
+                                    <input type="text" name="city" class="form-control" id="inputCity" required>
                                 </div>
                             </div>
 
                             <div class="row mt-3">
                                 <div class="form-group col-md-6">
                                     <label for="inputState">State</label>
-                                    <input type="text" name="state" class="form-control" id="inputState" >
+                                    <input type="text" name="state" class="form-control" id="inputState" required>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label for="inputPinCode">Pin code</label>
-                                    <input type="text" name="pincode" class="form-control" id="inputPinCode" >
+                                    <input type="text" name="pincode" class="form-control" id="inputPinCode" required>
                                 </div>
                             </div>
 

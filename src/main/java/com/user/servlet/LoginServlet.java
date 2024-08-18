@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
                 User user = new User();
                 user.setName("Admin");
                 session.setAttribute("userobj", user);
-                response.sendRedirect("admin/index.jsp");
+                response.sendRedirect("admin/home.jsp");
             } else {
                 User user = dao.login(email, password);
                 if(user != null) {
