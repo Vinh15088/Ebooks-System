@@ -4,7 +4,7 @@
 <div class="container-fluid"
      style="height: 10px"; background-color: #303f9f></div>
 
-<div class="container-fluid p-3 bg-light">
+<div class="container-fluid p-3 bg-light ">
     <div class="row">
         <div class="col-md-3 text-success">
             <h3><i class="fa fa-book"></i> Ebooks</h3>
@@ -18,16 +18,16 @@
         </div>
 
         <c:if test="${not empty userobj}">
-            <div class="col-md-3 text-white" style="display: flex; align-items: center;">
-                <a href="checkout.jsp"><i class="fa fa-cart-plus fa-2x "></i></a>
+            <div class="col-md-3 text-white d-flex justify-content-end" style="display: flex; align-items: center;">
+                <a href="checkout.jsp"><i class="fa fa-cart-plus fa-2x"></i></a>
                 <a href="login.jsp" class="btn btn-success mx-2"><i class="fa fa-user-plus"></i> ${userobj.name}</a>
                 <a href="logout" class="btn btn-primary"><i class="fa fa-right-to-bracket"></i> Logout</a>
             </div>
         </c:if>
 
         <c:if test="${empty userobj}">
-            <div class="col-md-3 text-white">
-                <a href="login.jsp" class="btn btn-success"><i class="fa fa-right-to-bracket"></i> Login</a>
+            <div class="col-md-3 text-white d-flex justify-content-end">
+                <a href="login.jsp" class="btn btn-success mx-2"><i class="fa fa-right-to-bracket"></i> Login</a>
                 <a href="register.jsp" class="btn btn-primary"><i class="fa fa-user-plus"></i> Register</a>
             </div>
         </c:if>
